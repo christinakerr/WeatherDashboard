@@ -6,6 +6,10 @@ label {
     display: block;
 }
 
+.hidden {
+    display: none;
+}
+
 .five-day {
     width: 19%;
     float: left;

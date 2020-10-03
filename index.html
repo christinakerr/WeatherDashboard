@@ -38,18 +38,19 @@
                 </ul>
             </div>
             <div class="col-md-8">
-                <div class="card">
-                    <div class="card-body">
+                <div class="card hidden" id="card-div">
+                    <div class="card-body hidden" id="card-div-2">
                         <!-- The city's current weather -->
                         <h2><span id="cityName"></span> <span id="currentDate"></span> <span id="weatherEmoji"></span></h2>
-                        <p id="temp-main">Temperature: </p>
-                        <p id="humidity-main">Humidity: </p>
-                        <p id="wind-main">Wind Speed: </p>
-                        <p id="UV-main">UV Index:</p>
+                        <p id="temp-main"></p>
+                        <p id="humidity-main"></p>
+                        <p id="wind-main"></p>
+                        <p id="UV-main"></p>
                     </div>
                 </div>
-                <h3>5-Day Forecast:</h3>
-                <div class="card five-day">
+                <h3 class="hidden" id="fiveDayHead">5-Day Forecast:</h3>
+                <div class="col" id="fiveDayContainer">
+                <!-- <div class="card five-day">
                     <div class="card-body">
                         <h5 class="card-title">Day 1</h5>
                         <p class="card-text">Emoji</p>
@@ -88,6 +89,7 @@
                         <p class="card-text">Temp: </p>
                         <p class="card-text">Humidity: </p>
                     </div>
+                </div> -->
                 </div>
             </div>
         </div>
