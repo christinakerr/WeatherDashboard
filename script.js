@@ -13,6 +13,7 @@ var fiveDayDiv = $("#fiveDayContainer");
 var fiveDayH3 = $("#fiveDayHead");
 var mainCardDiv = $("#card-div");
 var secondCardDiv = $("#card-div-2");
+var searchHistoryUl = $("#searchHistory");
 
 var currentCity;
 
@@ -33,8 +34,14 @@ function citySearch(event) { // Displays weather data for a new city
             method: "GET"
         }).then(function (cityWeatherData) {
 
-            mainCardDiv.css("display", "block");
+            mainCardDiv.css("display", "block"); // Show the main columns
             secondCardDiv.css("display", "block");
+
+            var previouslySearchedLi = $(`<li class="list-group-item">${currentCity}</li>`);
+            console.log(searchHistoryUl, previouslySearchedLi);
+
+            searchHistoryUl.prepend(previouslySearchedLi); // Add city to list of previous searches
+
 
             console.log(cityWeatherData)
             cityNameH2.text(cityWeatherData.name);
@@ -63,8 +70,10 @@ function citySearch(event) { // Displays weather data for a new city
             }).then(function (fiveDayData) {
                 console.log(fiveDayData);
 
-                fiveDayH3.css("display", "block");
+                fiveDayH3.css("display", "block"); //Show Five Day Forecast heading
                 var day = 1;
+
+                fiveDayDiv.empty();
 
                 for (var i = 5; i < fiveDayData.list.length; i += 8) { //Generate card for each of the five days
                     var dayEl = $(`
