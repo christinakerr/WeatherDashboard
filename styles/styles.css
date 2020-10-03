@@ -1,0 +1,13 @@
+.jumbotron {
+    background-color: #2680E3;
+}
+
+label {
+    display: block;
+}
+
+.five-day {
+    width: 19%;
+    float: left;
+    margin: 2px;
+}

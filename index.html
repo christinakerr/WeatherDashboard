@@ -8,12 +8,90 @@
     <meta name="Description" content="Enter your description here" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/cosmo/bootstrap.min.css">
     <link rel="stylesheet" href="styles/styles.css">
-    <title>Title</title>
+    <title>Weather Dashboard</title>
 </head>
 
 <body>
+    <header class="jumbotron text-center">
+        <h1 class="display-4">Weather Dashboard</h1>
+    </header>
 
+    <div class="container">
+        <div class="row">
+            <div class="card col-md-4">
+                <div class="card-header">
+                    <form>
+                        <div class="form-group">
+                            <label for="cityQuery">Search for a City:</label>
+                            <!--Search for a city-->
+                            <input type="text" id="cityQuery">
+                            <button type="submit" class="btn btn-primary"><i class="fas fa-search"></i></button>
+                        </div>
+                    </form>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Cras justo odio</li> <!-- Previously searched cities-->
+                    <li class="list-group-item">Dapibus ac facilisis in</li>
+                    <li class="list-group-item">Vestibulum at eros</li>
+                </ul>
+            </div>
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-body">
+                        <!-- The city's current weather -->
+                        <h2>City (Date) Emoji</h2>
+                        <p>Temperature: </p>
+                        <p>Humidity: </p>
+                        <p>Wind Speed: </p>
+                        <p>UV Index:</p>
+                    </div>
+                </div>
+                <h3>5-Day Forecast:</h3>
+                <div class="card five-day">
+                    <div class="card-body">
+                        <h5 class="card-title">Day 1</h5>
+                        <p class="card-text">Emoji</p>
+                        <p class="card-text">Temp: </p>
+                        <p class="card-text">Humidity: </p>
+                    </div>
+                </div>
+                <div class="card five-day">
+                    <div class="card-body">
+                        <h5 class="card-title">Day 2</h5>
+                        <p class="card-text">Emoji</p>
+                        <p class="card-text">Temp: </p>
+                        <p class="card-text">Humidity: </p>
+                    </div>
+                </div>
+                <div class="card five-day">
+                    <div class="card-body">
+                        <h5 class="card-title">Day 3</h5>
+                        <p class="card-text">Emoji</p>
+                        <p class="card-text">Temp: </p>
+                        <p class="card-text">Humidity: </p>
+                    </div>
+                </div>
+                <div class="card five-day">
+                    <div class="card-body">
+                        <h5 class="card-title">Day 4</h5>
+                        <p class="card-text">Emoji</p>
+                        <p class="card-text">Temp: </p>
+                        <p class="card-text">Humidity: </p>
+                    </div>
+                </div>
+                <div class="card five-day">
+                    <div class="card-body">
+                        <h5 class="card-title">Day 5</h5>
+                        <p class="card-text">Emoji</p>
+                        <p class="card-text">Temp: </p>
+                        <p class="card-text">Humidity: </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/umd/popper.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/js/bootstrap.min.js"></script>
