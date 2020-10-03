@@ -21,10 +21,8 @@ var APIKey = "c9d43ea44c719a1c7bfa973c77a3170b";
 
 // FUNCTIONS
 
-function citySearch(event) { // Displays weather data for a new city
-    event.preventDefault();
-    currentCity = inputEl.val().trim();
-    console.log(currentCity);
+function citySearch() { // Displays weather data for a new city
+    
 
     var queryURL = "https://api.openweathermap.org/data/2.5/weather?q=" + currentCity + "&units=imperial&appid=" + APIKey;
 
@@ -37,10 +35,7 @@ function citySearch(event) { // Displays weather data for a new city
             mainCardDiv.css("display", "block"); // Show the main columns
             secondCardDiv.css("display", "block");
 
-            var previouslySearchedLi = $(`<li class="list-group-item">${currentCity}</li>`);
-            console.log(searchHistoryUl, previouslySearchedLi);
-
-            searchHistoryUl.prepend(previouslySearchedLi); // Add city to list of previous searches
+            inputEl.val("");
 
 
             console.log(cityWeatherData)
@@ -98,5 +93,24 @@ function citySearch(event) { // Displays weather data for a new city
 //MAIN PROCESSES
 
 window.addEventListener('load', function () {
-    searchButton.on("click", citySearch); // When the user clicks search button
+    searchButton.on("click", function(event) { // When the user clicks search button
+        event.preventDefault();
+
+        currentCity = inputEl.val().trim();
+        console.log(currentCity);
+
+        var previouslySearchedLi = $(`<li class="list-group-item search-history" value="${currentCity}">${currentCity}</li>`);
+        console.log(searchHistoryUl, previouslySearchedLi);
+
+        searchHistoryUl.prepend(previouslySearchedLi); // Add city to list of previous searches
+
+        citySearch();
+    });
+
+    searchHistoryUl.on("click", function (event) { // When user clicks a city in the search history
+        var listItem = $(event.target);
+        currentCity = listItem[0].firstChild.data;
+        console.log(listItem, currentCity);
+        citySearch();
+    })
 })
