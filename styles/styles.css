@@ -28,3 +28,7 @@ label {
     background-color: red;
     color: white;
 }
+
+.inline-img {
+    display: inline;
+}

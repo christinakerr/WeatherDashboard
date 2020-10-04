@@ -45,7 +45,10 @@ function citySearch() { // Displays weather data for a new city
             console.log(cityWeatherData)
             cityNameH2.text(cityWeatherData.name);
             currentDateH2.text("(" + moment.format('MMMM DD YYYY') + ")");
-            weatherEmojiTodayEl.text("Weather");
+
+            var weatherIcon = displayIcons(cityWeatherData);
+
+            weatherEmojiTodayEl.attr("src", weatherIcon);
 
             tempMainEl.text("Temperature: " + cityWeatherData.main.temp);
             humidityMainEl.text("Humidity: " + cityWeatherData.main.humidity);
@@ -111,6 +114,30 @@ function uvColorCode(element, number) { // Color code the UV index
         element.addClass("mediumUV");
     } else {
         element.addClass("highUV");
+    }
+}
+
+function displayIcons(weatherData) { // Assigning images to each type of weather
+    if (weatherData.weather[0].description === "clear sky") {
+        return "http://openweathermap.org/img/wn/01d@2x.png";
+    } else if (weatherData.weather[0].description === "few clouds"){
+        return "http://openweathermap.org/img/wn/02d@2x.png";
+    } else if (weatherData.weather[0].description === "scattered clouds"){
+        return "http://openweathermap.org/img/wn/03d@2x.png";
+    } else if (weatherData.weather[0].description === "broken clouds"){
+        return "http://openweathermap.org/img/wn/04d@2x.png";
+    } else if (weatherData.weather[0].description === "shower rain" || weatherData.weather[0].description === "light rain"){
+        return "http://openweathermap.org/img/wn/09d@2x.png";
+    } else if (weatherData.weather[0].description === "rain"){
+        return "http://openweathermap.org/img/wn/10d@2x.png";
+    } else if (weatherData.weather[0].description === "thunderstorm"){
+        return "http://openweathermap.org/img/wn/11d@2x.png";
+    } else if (weatherData.weather[0].description === "snow"){
+        return "http://openweathermap.org/img/wn/13d@2x.png";
+    } else if (weatherData.weather[0].description === "mist"){
+        return "http://openweathermap.org/img/wn/50d@2x.png";
+    } else {
+        return "";
     }
 }
 
