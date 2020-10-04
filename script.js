@@ -19,6 +19,8 @@ var currentCity;
 
 var APIKey = "c9d43ea44c719a1c7bfa973c77a3170b";
 
+var allSearches = JSON.parse(localStorage.getItem("previousSearches")) || []; // Retrieve old searches, if any
+
 // FUNCTIONS
 
 function citySearch() { // Displays weather data for a new city
@@ -90,17 +92,33 @@ function citySearch() { // Displays weather data for a new city
     }
 }
 
+function loadSearches() { // Display list of previous searches from local storage
+    for (var index = 0; index < allSearches.length; index++) {
+        var searchedItem = $(`<li class="list-group-item search-history" value="${allSearches[index]}">${allSearches[index]}</li>`);
+        searchHistoryUl.prepend(searchedItem);
+    }
+}
+
 //MAIN PROCESSES
 
+console.log(allSearches);
+
 window.addEventListener('load', function () {
+
+    loadSearches(); // Loads previous searches
+
+
     searchButton.on("click", function(event) { // When the user clicks search button
         event.preventDefault();
 
         currentCity = inputEl.val().trim();
         console.log(currentCity);
 
-        var previouslySearchedLi = $(`<li class="list-group-item search-history" value="${currentCity}">${currentCity}</li>`);
-        console.log(searchHistoryUl, previouslySearchedLi);
+        var previouslySearchedLi = $(`<li class="list-group-item search-history" value="${currentCity}">${currentCity}</li>`); // Add city to list of previously searched
+
+        allSearches.push(currentCity);
+
+        localStorage.setItem("previousSearches", JSON.stringify(allSearches)); // Save searches to local storage
 
         searchHistoryUl.prepend(previouslySearchedLi); // Add city to list of previous searches
 
