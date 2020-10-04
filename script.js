@@ -21,6 +21,8 @@ var APIKey = "c9d43ea44c719a1c7bfa973c77a3170b";
 
 var allSearches = JSON.parse(localStorage.getItem("previousSearches")) || []; // Retrieve old searches, if any
 
+var moment = moment();
+
 // FUNCTIONS
 
 function citySearch() { // Displays weather data for a new city
@@ -42,7 +44,7 @@ function citySearch() { // Displays weather data for a new city
 
             console.log(cityWeatherData)
             cityNameH2.text(cityWeatherData.name);
-            currentDateH2.text("Today");
+            currentDateH2.text("(" + moment.format('MMMM DD YYYY') + ")");
             weatherEmojiTodayEl.text("Weather");
 
             tempMainEl.text("Temperature: " + cityWeatherData.main.temp);
@@ -101,7 +103,7 @@ function loadSearches() { // Display list of previous searches from local storag
 
 //MAIN PROCESSES
 
-console.log(allSearches);
+console.log(moment.format('MMMM DD YYYY'));
 
 window.addEventListener('load', function () {
 
