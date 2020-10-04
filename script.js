@@ -80,11 +80,13 @@ function citySearch() { // Displays weather data for a new city
                 fiveDayDiv.empty();
 
                 for (var i = 5; i < fiveDayData.list.length; i += 8) { //Generate card for each of the five days
+                    var weatherImage = displayIcons(fiveDayData.list[i]);
+
                     var dayEl = $(`
                     <div class="card five-day">
                         <div class="card-body">
                             <h5 class="card-title">Day ${day}</h5>
-                            <p class="card-text">Emoji</p>
+                            <img src="${weatherImage}" class="card-text fiveDayImg">
                             <p class="card-text">Temp: ${fiveDayData.list[i].main.temp}</p>
                             <p class="card-text">Humidity: ${fiveDayData.list[i].main.humidity}</p>
                         </div>
@@ -122,7 +124,7 @@ function displayIcons(weatherData) { // Assigning images to each type of weather
         return "http://openweathermap.org/img/wn/01d@2x.png";
     } else if (weatherData.weather[0].description === "few clouds"){
         return "http://openweathermap.org/img/wn/02d@2x.png";
-    } else if (weatherData.weather[0].description === "scattered clouds"){
+    } else if (weatherData.weather[0].description === "scattered clouds" || weatherData.weather[0].description === "overcast clouds"){
         return "http://openweathermap.org/img/wn/03d@2x.png";
     } else if (weatherData.weather[0].description === "broken clouds"){
         return "http://openweathermap.org/img/wn/04d@2x.png";
