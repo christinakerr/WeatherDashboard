@@ -58,7 +58,9 @@ function citySearch() { // Displays weather data for a new city
                 url: uvQuery,
                 method: "GET"
             }).then(function (uvData) {
-                uvMainEl.text("UV Index: " + uvData.value);
+                uvMainEl.text(uvData.value);
+                uvColorCode(uvMainEl, uvData.value);
+
             })
 
             var fiveDayURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + currentCity + "&units=imperial&appid=" + APIKey;
@@ -98,6 +100,17 @@ function loadSearches() { // Display list of previous searches from local storag
     for (var index = 0; index < allSearches.length; index++) {
         var searchedItem = $(`<li class="list-group-item search-history" value="${allSearches[index]}">${allSearches[index]}</li>`);
         searchHistoryUl.prepend(searchedItem);
+    }
+}
+
+function uvColorCode(element, number) { // Color code the UV index
+    console.log(element, number);
+    if (number < 3) {
+        element.addClass("lowUV");
+    } else if (number >= 3 && number < 8) {
+        element.addClass("mediumUV");
+    } else {
+        element.addClass("highUV");
     }
 }
 

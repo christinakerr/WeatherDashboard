@@ -15,3 +15,16 @@ label {
     float: left;
     margin: 2px;
 }
+
+.lowUV {
+    background-color: greenyellow;
+}
+
+.mediumUV {
+    background-color: yellow;
+}
+
+.highUV {
+    background-color: red;
+    color: white;
+}
