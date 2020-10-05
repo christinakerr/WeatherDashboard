@@ -50,9 +50,9 @@ function citySearch() { // Displays weather data for a new city
 
             weatherEmojiTodayEl.attr("src", weatherIcon);
 
-            tempMainEl.text("Temperature: " + cityWeatherData.main.temp + " F");
+            tempMainEl.text("Temperature: " + Math.floor(cityWeatherData.main.temp) + " F");
             humidityMainEl.text("Humidity: " + cityWeatherData.main.humidity +"%");
-            windMainEl.text("Wind Speed: " + cityWeatherData.wind.speed + " mph");
+            windMainEl.text("Wind Speed: " + Math.floor(cityWeatherData.wind.speed) + " mph");
 
             var uvQuery = "https://api.openweathermap.org/data/2.5/uvi?lat=" + cityWeatherData.coord.lat + "&lon=" + cityWeatherData.coord.lon + "&appid=" + APIKey;
 
@@ -87,7 +87,7 @@ function citySearch() { // Displays weather data for a new city
                         <div class="card-body">
                             <h5 class="card-title">Day ${day}</h5>
                             <img src="${weatherImage}" class="card-text fiveDayImg">
-                            <p class="card-text">Temp: ${fiveDayData.list[i].main.temp} F</p>
+                            <p class="card-text">Temp: ${Math.floor(fiveDayData.list[i].main.temp)} F</p>
                             <p class="card-text">Humidity: ${fiveDayData.list[i].main.humidity}%</p>
                         </div>
                     </div>
